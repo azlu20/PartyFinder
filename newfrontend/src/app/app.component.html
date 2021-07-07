@@ -1,0 +1,17 @@
+<div class = "banner" ><div class = "row">
+  <div class = "col"></div>
+  <div class = "col">
+      <div class = "brandname">
+        <a *ngIf = "guestOrUser == 'guest' else elseBlock"  [routerLink] = "['/guesthome']" style = "text-decoration: none;">HMU</a>
+        <ng-template #elseBlock> <a>NOTHMU</a></ng-template>
+        <!-- Insert Router for Login Page Here Afterwards -->
+      </div>
+  </div>
+  <div class = "col">
+    <div style = "text-align: right; margin-right: 10%; margin-top: 5%; font-size: 20px; color: #214ED3;" > 
+    <a [routerLink] = "['/login']"> Login </a>  
+     </div>
+  </div>
+</div>
+</div> 
+<router-outlet></router-outlet>
