@@ -1,6 +1,6 @@
 from .entity import Base
 from sqlalchemy import create_engine, Column, String, Integer
-
+from marshmallow import Schema, fields
 
 class User(Base):
     __tablename__ = 'Users'
@@ -10,17 +10,17 @@ class User(Base):
     location = Column(String, nullable=False)
     age = Column(Integer, nullable=False)
     gender = Column(String, nullable=False)
-    phonenumber = Column(Integer)
-    partyfiendrating = Column(Integer)
+    phoneNumber = Column(Integer)
+    partyFiendRating = Column(Integer)
 
-    def __init__(self, userID, firstname, lastname, location, age, gender, phonenumber, partyf):
+    def __init__(self, userID, firstname, lastname, location, age, gender, phoneNumber, partyf):
 
         self.userID = userID
         self.location = location
         self.age = age
         self.gender = gender
         self.partyfiendrating = partyf
-        self.phonenumber = phonenumber
+        self.phoneNumber = phoneNumber
         self.firstName = firstname
         self.lastName = lastname
 
@@ -29,3 +29,13 @@ class User(Base):
         for ele in self.friendsID:
             if (friendObj.friendsID == ele):
                 mutualfriends.append(ele)
+
+class UserSchema(Schema):
+    userID = fields.Number()
+    firstName = fields.String()
+    lastName = fields.String()
+    location = fields.String()
+    age = fields.Number()
+    gender = fields.String()
+    phoneNumber = fields.Number()
+    partyFiendRating = fields.Number()

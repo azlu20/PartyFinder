@@ -1,17 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { GatheringComponent } from './gathering/gathering.component';
-import { HostComponent } from './host/host.component';
-
+import { RouterModule } from '@angular/router';
+import { UserComponent } from './user/user.component';
 
 
 @NgModule({
-  declarations: [
-    GatheringComponent,
-    HostComponent
-  ],
+  declarations: [UserComponent],
   imports: [
-    CommonModule
+    CommonModule, RouterModule.forChild([])
   ]
 })
 export class MainPageModule { }
