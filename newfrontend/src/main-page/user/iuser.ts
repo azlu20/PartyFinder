@@ -1,6 +1,5 @@
 
-
-export interface User{
+export interface IUser{
     userID: string | undefined;
     firstName: string | undefined;
     lastName: string | undefined;

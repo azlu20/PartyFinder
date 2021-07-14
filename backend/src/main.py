@@ -1,13 +1,13 @@
 from .entities.entity import Session, engine, Base
 from .entities.User import User, UserSchema
 from flask import Flask, jsonify, request
-
+from flask_cors import CORS
 # generate database schema
 Base.metadata.create_all(engine)
 
 # start session
 app = Flask(__name__)
-
+CORS(app)
 
 @app.route('/user')
 def get_users():
