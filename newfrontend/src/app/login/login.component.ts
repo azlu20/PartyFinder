@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
   onClick() : void{
-    this.route.navigate(['/user/0'])
+    this.route.navigate(['/user/1'])
 
   }
 }

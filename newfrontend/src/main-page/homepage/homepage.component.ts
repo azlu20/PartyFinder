@@ -32,7 +32,7 @@ export class HomepageComponent implements OnInit {
   
   private _getUsers() : Observable<IUser[]>{
 
-    return this.http.get<IUser[]>(`${API_URL}/user`).pipe(
+    return this.http.get<IUser[]>(`${API_URL}/user/${this.userID}`).pipe(
       tap(data => this._user = data),
       catchError(err => this.handleError(err))
     )

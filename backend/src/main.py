@@ -2,6 +2,7 @@ from .entities.entity import Session, engine, Base
 from .entities.User import User, UserSchema
 from flask import Flask, jsonify, request
 from flask_cors import CORS
+
 # generate database schema
 Base.metadata.create_all(engine)
 
@@ -9,14 +10,17 @@ Base.metadata.create_all(engine)
 app = Flask(__name__)
 CORS(app)
 
-@app.route('/user')
-def get_users():
+
+@app.route('/user/<int:id>', methods=['GET'])
+def get_users(id):
     session = Session()
-    users_temp = session.query(User).all()
+    if id == 0 or id is None:
+        users_temp = session.query(User).all()
+    else:
+        users_temp = session.query(User).filter_by(userID=id).all()
     schema = UserSchema(many=True)
     users = schema.dump(users_temp)
     session.close()
-
     return jsonify(users)
 
 
