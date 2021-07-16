@@ -13,13 +13,13 @@ class User(Base):
     phoneNumber = Column(Integer)
     partyFiendRating = Column(Integer)
 
-    def __init__(self, userID, firstname, lastname, location, age, gender, phoneNumber, partyf):
+    def __init__(self, userID, firstname, lastname, location, age, gender, phoneNumber, partyfiendrating):
 
         self.userID = userID
         self.location = location
         self.age = age
         self.gender = gender
-        self.partyfiendrating = partyf
+        self.partyfiendrating = partyfiendrating
         self.phoneNumber = phoneNumber
         self.firstName = firstname
         self.lastName = lastname

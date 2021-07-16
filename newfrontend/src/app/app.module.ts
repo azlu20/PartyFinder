@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { GuesthomeComponent } from './guesthome/guesthome.component';
 import { LoginComponent } from './login/login.component';
 import { UserComponent } from '../main-page/user/user.component';
-
+import { AgmCoreModule } from '@agm/core';
 @NgModule({
   declarations: [
     AppComponent, GuesthomeComponent, LoginComponent
@@ -21,7 +21,10 @@ import { UserComponent } from '../main-page/user/user.component';
        {path: '', redirectTo: 'guesthome', pathMatch: 'full'}
       
       ]),
-      MainPageModule
+      MainPageModule,
+      AgmCoreModule.forRoot({
+        apiKey : 'AIzaSyB3p5nEkv0cxmNDp2uiOfN8V7VXjwWHhDw'
+      }),
   ],
   providers: [],
   bootstrap: [AppComponent]

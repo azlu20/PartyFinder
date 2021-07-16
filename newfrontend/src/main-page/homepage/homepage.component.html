@@ -1,4 +1,12 @@
+
+<div class = "card"> 
+    <div class = "container-fluid" style = "width: 85%">
+    <agm-map style = "height: 600px" [latitude]="lat" [longitude]="lng" [backgroundColor] = "color">
+    
+    </agm-map>
+</div>
 <div class = "card" *ngFor = "let users of _user">
     <h1>{{users.userID}}</h1>
     <h2>{{users.firstName}}</h2>
+</div>
 </div>
