@@ -1,3 +1,5 @@
+from __future__ import print_function
+import sys
 from .entities.entity import Session, engine, Base
 from .entities.User import User, UserSchema
 from flask import Flask, jsonify, request
@@ -27,8 +29,10 @@ def get_users(id):
 @app.route('/user/add', methods=['POST'])
 def add_users():
     session = Session()
-    added_user = UserSchema().load(request.get_json())
-    user = User(added_user.data)
+    schema = UserSchema()
+    jsonuser = request.get_json(silent=True)
+    user = schema.load(jsonuser)
+    print(user.firstName, file = sys.stderr)
     # userID = request.form.get("userID")
     # firstName = request.form.get("firstName")
     # lastName = request.form.get("lastName")
@@ -42,11 +46,9 @@ def add_users():
     # users = User(userID, firstName, lastName, location, age, gender, phoneNumber, partyFiendRating)
     session.add(user)
     session.commit()
-    schema = UserSchema
+    
     session.close()
-    userjson = schema.dump(user.data)
-    print(user.data)
-    return jsonify(userjson)
+    return 2
 # users = session.query(User).all()
 
 # testobj = User(2, "testFirst", "testLast", "NA", 19, "male", 1111111, 100)
@@ -57,3 +59,7 @@ def add_users():
 # users = session.query(User).all()
 # for user in users:
 #     print(f'({user.userID}) {user.firstName} - {user.lastName}')
+
+@app.route('/party/<int:id>', methods =['GET'])
+def get_party(id):
+    pass
