@@ -6,6 +6,8 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from "@angular/common/http
 import { ActivatedRoute, Router } from '@angular/router';
 import { API_URL } from 'src/app/env';
 import { UserService } from 'src/app/user.service';
+import { GatheringService } from 'src/app/gathering.service';
+import { IGathering } from '../gathering/igathering';
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
@@ -17,15 +19,16 @@ export class HomepageComponent implements OnInit {
   color = "white"
 // @ts-ignore
   _user: IUser[];
-
-
+//@ts-ignore
+  _gathering: IGathering[];
   // @ts-ignore
   private userID: string | null;
   
   constructor(
     private userservice: UserService,
      private routerService : Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private gatheringservice: GatheringService
     ) {
      }
 
@@ -35,8 +38,10 @@ export class HomepageComponent implements OnInit {
       next: users => this._user = users
     }
     )
-    
+    this.gatheringservice._getGathering().subscribe({
+      next: gatherings => this._gathering = gatherings
+    })
+   console.log(this._gathering) 
+   console.log(this._user)
   }
-  
-
 }

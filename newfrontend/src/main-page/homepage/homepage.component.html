@@ -5,8 +5,22 @@
     
     </agm-map>
 </div>
-<div class = "card" *ngFor = "let users of _user">
-    <h1>{{users.userID}}</h1>
-    <h2>{{users.firstName}}</h2>
+<div class = "card">
+
+<table class = "table">
+    <thead>
+        <tr>
+            <th scope = "col">HostID</th>
+            <th scope = "col">HostName</th>
+            <th scope = "col">PartyID</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor='let gathering of _gathering'>
+            <td>{{gathering.HostID}}</td>
+            <td>{{gathering.PartyID}}</td>
+        </tr>
+    </tbody>
+</table>
 </div>
 </div>
